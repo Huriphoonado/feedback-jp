@@ -7,29 +7,38 @@
     <meta name="description" content="Web Audio Collaboration">
     <meta name="author" content="Willie Payne">
 
+    <link rel="stylesheet" href="css/style.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.9/Tone.js" integrity="sha512-nUjml8mN4CNYqBAy0ndDrd8pJV/eTtBNDsnvNtPqozx9/BccUeWSoKW14qWkQUnhuh8E3m+yra3qdzM68lqPEQ==" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1>JP + Willie Collab</h1>
-    <button type="button" name="button">Audio On</button>
+    <div class="flex-container">
+        <button type="button" id="onButton" class="button" name="button" onclick="toggleOn()">On</button>
+        <div>
+            <div>
+                <input type="range" class="slider" label="Interference Volume Slider" oninput="set_cycleVol(this.value)" min="-76" max="18" value="-76">
+                Interference
+            </div>
+            <div style="margin-top:6px;">
+                <input type="radio" id="p0" checked name="pitch" value="0" onclick="set_cycleFreq(this.value)">
+                <input type="radio" id="p1" name="pitch" value="1" onclick="set_cycleFreq(this.value)">
+                <input type="radio" id="p2" name="pitch" value="2" onclick="set_cycleFreq(this.value)">
+                <input type="radio" id="p3" name="pitch" value="3" onclick="set_cycleFreq(this.value)">
+                Pitch: <b id="cycleFreqText">243</b>
+            </div>
+        </div>
+    </div>
+    <div id="wave">
+
+    </div>
 
     <div>
         <h2>Global Volume</h2>
         <input type="range" oninput="set_globalVol(this.value)" min="-76" max="18" value="-5">
     </div>
 
-    <div>
-        <h2>Oscillator</h2>
-        <div>
-            <input type="range" oninput="set_cycleVol(this.value)" min="-76" max="18" value="-5">
-            Volume
-        </div>
-        <div>
-            <input type="range" oninput="set_cycleFreq(this.value)" min="0" max="3" value="0">
-            Frequency: <b id="cycleFreqText">243</b>
-        </div>
-    </div>
+
 
     <div>
         <h2>Biquad Filter</h2>
