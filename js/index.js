@@ -1,11 +1,4 @@
 // TODOS
-// Names
-// 	Audio On -> Start
-// 	Global Volume -> Nix
-// 	Oscillator -> Nix
-// 		No Header, Volume -> Interference
-// 		Pitch -> Buttons, "Pitch 1, 2..."
-//  Filter/Limiter -> Eventually gone,
 
 let appIsOn = false;
 let micOpened = false;
@@ -22,12 +15,12 @@ const inputMeter = new Tone.Meter();
 
 // Output Chain
 const biquadFilt = new Tone.BiquadFilter({
-	frequency: 300,
+	frequency: 370,
 	Q: 1.75,
 	type: 'lowpass'
 });
-const outputVol = new Tone.Volume(-5);
-const limiter = new Tone.Limiter(-20);
+const outputVol = new Tone.Volume(-1);
+const limiter = new Tone.Limiter(-10);
 
 const waveform = new Tone.Waveform();
 
@@ -39,17 +32,6 @@ outputVol.chain(limiter, Tone.Destination);
 
 
 // ----------- Interface -----------
-
-// Turn audio and everything on
-/*document.querySelector('button')?.addEventListener('click', async () => {
-	await Tone.start();
-
-	mic.open().then(() => {
-		console.log("mic open");
-		setInterval(() => console.log(inputMeter.getValue()), 100);
-	}).catch(e => console.log("mic not open"));
-
-});*/
 
 async function toggleOn() {
 	let onButton = document.getElementById('onButton');
@@ -91,11 +73,11 @@ function set_globalVol(val) { outputVol.volume.rampTo(val, 0.1); }
 function set_cycleVol(val) { cycleVol.volume.rampTo(val, 0.1); }
 
 function set_cycleFreq(val) {
-	console.log(val);
 	let freqs = [243, 261, 293, 323];
+	let thingies = ['∽', '∾',  '∿', '≀',]
 	let uiText = document.getElementById('cycleFreqText');
 	cycle.frequency.rampTo(freqs[val], 0.1);
-	uiText.innerHTML = freqs[val];
+	uiText.innerHTML = thingies[val];
 }
 
 // Biquad

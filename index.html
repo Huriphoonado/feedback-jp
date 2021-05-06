@@ -14,48 +14,50 @@
 
 <body>
     <div class="flex-container">
-        <button type="button" id="onButton" class="button" name="button" onclick="toggleOn()">On</button>
+        <button type="button" id="onButton" class="button" name="button" onclick="toggleOn()">mic on/off</button>
         <div>
             <div>
-                <input type="range" class="slider" label="Interference Volume Slider" oninput="set_cycleVol(this.value)" min="-76" max="18" value="-76">
-                Interference
+                <input type="range" class="slider" label="Interference Volume Slider" oninput="set_cycleVol(this.value)" min="-76" max="-1" value="-76">
+                Interference Volume
             </div>
-            <div style="margin-top:6px;">
+            <div style="margin-top:2px;">
                 <input type="radio" id="p0" checked name="pitch" value="0" onclick="set_cycleFreq(this.value)">
                 <input type="radio" id="p1" name="pitch" value="1" onclick="set_cycleFreq(this.value)">
                 <input type="radio" id="p2" name="pitch" value="2" onclick="set_cycleFreq(this.value)">
                 <input type="radio" id="p3" name="pitch" value="3" onclick="set_cycleFreq(this.value)">
-                Pitch: <b id="cycleFreqText">243</b>
+                Interference Pitch <b style="font-size:48px;" id="cycleFreqText">∽</b>
             </div>
         </div>
+        <section style="margin-top:20px;" class="accordion">
+            <input type="checkbox" name="collapse" id="handle1">
+            <h2 class="handle"><label for="handle1">Additional Controls</label></h2>
+            <div class="content">
+                <div>
+                    <input class="slider" type="range" oninput="set_globalVol(this.value)" min="-76" max="18" value="-1">
+                    Volume
+                </div>
+                <div>
+                    <h2>Biquad Filter</h2>
+                    <div>
+                        <input class="slider" type="range" oninput="set_filtFreq(this.value)" min="1" max="1000" value="300">
+                        Frequency: <b id="filtFreqText">300</b>
+                    </div>
+                    <div>
+                        <input class="slider" type="range" oninput="set_filtQ(this.value)" min="-20" max="10" step="0.01" value="1.75">
+                        Q: <b id="filtQText">1.75</b>
+                    </div>
+                </div>
+                <div>
+                    <h2>Limiter</h2>
+                    <input class="slider" type="range" oninput="set_limiter(this.value)" min="-100" max="-1" value="-10">
+                    Threshold: <b id="limiterThreshText">-10</b>
+                </div>
+            </div>
+        </section>
     </div>
-    <div id="wave">
-
-    </div>
-
-    <div>
-        <h2>Global Volume</h2>
-        <input type="range" oninput="set_globalVol(this.value)" min="-76" max="18" value="-5">
-    </div>
-
-
-
-    <div>
-        <h2>Biquad Filter</h2>
-        <div>
-            <input type="range" oninput="set_filtFreq(this.value)" min="1" max="1000" value="300">
-            Frequency: <b id="filtFreqText">300</b>
-        </div>
-        <div>
-            <input type="range" oninput="set_filtQ(this.value)" min="-20" max="10" step="0.01" value="1.75">
-            Q: <b id="filtQText">1.75</b>
-        </div>
-    </div>
-    <div>
-        <h2>Limiter</h2>
-        <input type="range" oninput="set_limiter(this.value)" min="-100" max="-1" value="-20">
-        Threshold: <b id="limiterThreshText">-20</b>
-    </div>
+    <footer>
+        made by <a href="http://www.jpmerz.com" target="_blank">JP</a> and <a href="https://williepayne.com" target="_blank">Willie</a> 
+    </footer>
 
     <script src="js/index.js"></script>
 </body>

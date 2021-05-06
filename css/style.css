@@ -11,17 +11,30 @@ h1 {
     font-size: 36px;
 }
 
+a:link {
+  color: inherit;
+  transition: color 0.1s ease-in-out;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+    color: #751aff;
+}
+
 /* Custom Button */
 .button {
   background-color: rgba(0, 0, 0, 0.0);
   border: none;
   outline: none;
   color: rgba(0, 0, 0, 0.5);
-  padding: 15px 32px;
+  padding: 15px 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 124px;
+  font-size: 84px;
   font-family: inherit;
   text-transform: uppercase;
   text-transform: italic;
@@ -29,7 +42,6 @@ h1 {
 }
 
 .button:hover {
-    color: #751aff;
     cursor: pointer;
 }
 
@@ -119,9 +131,103 @@ input[type='Radio']:checked {
 }
 
 .flex-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
+    width:600px;
+    margin-left: 20%;
+    margin-top: 20vh;
+}
+
+/* Resize properly */
+@media only screen and (max-width: 800px) {
+    .flex-container {
+        width:90%;
+        max-width:500px;
+        margin-left: 5%;
+        margin-top: 20vh;
+    }
+    .button {
+        font-size: 64px;
+    }
+}
+
+/* Accordion for Extra Controls */
+.accordion > input[type="checkbox"] {
+  position: absolute;
+  left: -100vw;
+}
+
+.accordion .content {
+  overflow-y: hidden;
+  height: 0;
+  transition: height 0.3s ease;
+}
+
+.accordion > input[type="checkbox"]:checked ~ .content {
+  height: auto;
+  overflow: visible;
+}
+
+.accordion label {
+  display: block;
+}
+
+.accordion {
+  margin-bottom: 1em;
+}
+
+.accordion > input[type="checkbox"]:checked ~ .content {
+  padding: 15px;
+  border-left: 1px solid #e8e8e8;
+  border-top: 0;
+}
+
+.accordion .handle {
+  margin: 0;
+  font-size: 1.125em;
+  line-height: 1.2em;
+}
+
+.accordion label {
+  color: #333;
+  cursor: pointer;
+  font-weight: normal;
+  padding: 15px;
+  background: rgb(224, 224, 224);
+}
+
+.accordion label:hover,
+.accordion label:focus {
+  background: rgb(212, 212, 212);
+}
+
+.accordion .handle label:before {
+  /*font-family: 'fontawesome';*/
+  /*content: "\f054";*/
+  content:">";
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 18px;
+  line-height: 1.556em;
+  vertical-align: middle;
+}
+
+.accordion > input[type="checkbox"]:checked ~ .handle label:before {
+  /*content: "\f078";*/
+  content: "v";
+}
+
+.accordion p:last-child {
+  margin-bottom: 0;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 0px;
+    right: 4px;
+    height: 35px;
+    margin: 0px 50px 0px 0px;
+    text-align: right;
+    padding: 10px 20px;
+    font-style: italic;
+    font-size: 16px;
 }
